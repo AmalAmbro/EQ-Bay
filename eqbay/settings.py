@@ -150,8 +150,8 @@ ACCOUNT_AUTHENTICATED_REGISTRATION_REDIRECTS = True
 
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'ambrodeveloper@gmail.com'
-EMAIL_HOST_PASSWORD = 'sactdbsqrfknzwsx'
+EMAIL_HOST_USER = 'xxxxxxxxxxxx@gmail.com'
+EMAIL_HOST_PASSWORD = 'xxxxxxxxxxxxxxx'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
