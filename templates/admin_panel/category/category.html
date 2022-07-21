@@ -1,0 +1,98 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+{% load mptt_tags %}
+
+{% block content %}
+    <!-- Page Content-->
+    <div class="page-content">
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="page-title">Categories</h4>
+                            </div><!--end col-->
+                            <div class="col-auto align-self-center">
+                                <a class="btn btn-outline-info btn-icon-text"   href="{% url 'dashboard:category_create' %}" >Create <i class="ti-plus btn-icon-append"></i></a>
+                                <a class="btn btn-outline-info btn-icon-text"   href="{% url 'auth_logout' %}" >Logout <i class="ti-plus btn-icon-append"></i></a>
+                            </div><!--end col-->  
+                        </div><!--end row-->                                                              
+                    </div><!--end page-title-box-->
+                </div><!--end col-->
+            </div><!--end row-->
+            
+            <div class="row">                       
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row align-items-center">
+                                <div class="col">                      
+                                    <h4 class="card-title">List page Model</h4>                      
+                                </div><!--end col-->                                        
+                            </div>  <!--end row-->                                  
+                        </div><!--end card-header-->
+                        <div class="card-body">
+                            <div class="table-responsive browser_users">
+                                <table class="table mb-0">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th class="border-top-0">#</th>
+                                            <th class="border-top-0">Name</th>
+                                            <th class="border-top-0">Parent</th>
+                                            <th class="action">Action</th>
+                                        </tr><!--end tr-->
+                                    </thead>
+                                    <tbody>
+                                        {% if categories %}
+                                        {% for category in categories %}
+                                        <tr>                                                        
+                                            <td class="text-capitalize">{{ category.id }}</td>
+                                            {% comment %} <td class="text-capitalize">{{user.user}}</td>
+                                            <td>{{user.activation_key}}</td> {% endcomment %}
+                                            <td class="text-capitalize">{{ category.name }}</td>
+                                            <td>{{ category.parent }}</td>
+                                            <td class="action">                                                       
+                                                <a href="{% url 'dashboard:view_category' id=category.id %}" class="mr-2"><i class="las la-eye text-info font-18"></i></a>
+                                                <a href="{% url 'dashboard:edit_category' id=category.id %}" class="mr-2"><i class="las la-pen text-info font-18"></i></a>
+                                                <a class="action-button remove redirect btn btn-default btn-icon" style="padding:0;"
+                                data-id="{{category.id}}" data-text="{{confirm_delete_message}}" data-title="Are you sure?" href="{% url 'dashboard:delete_category' id=category.id %}"><i class="las la-trash-alt text-danger font-18"></i></a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        {% else %}
+                                        <tr>
+                                            <td>Empty<td>
+                                        </tr>
+                                        {% endif %}
+
+                                            <!--end tr-->   
+                                    </tbody>
+                                </table> <!--end table-->                                               
+                            </div><!--end /div-->
+                        </div><!--end card-body--> 
+                    </div><!--end card--> 
+                </div>
+                <!--end col-->   
+                <!--end col--> 
+            </div><!--end row--> 
+        </div>
+    </div>
+    <!-- end page content -->
+{% endblock content %}
+
+{% comment %} <h1>Category Tree</h1>
+            <ul>
+                {% recursetree categories %}
+                    
+                    <li>
+                        <h4>{{ node.name }}</h4>                
+                        {% if not node.is_child_node %}
+                        <ul>
+                            <a href="">{{ children }}</a>
+                        </ul>
+                        {% endif %}
+                    </li>
+                {% endrecursetree %}
+            </ul> {% endcomment %}

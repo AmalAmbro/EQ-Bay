@@ -1,0 +1,127 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+    <!-- Page Content-->
+    <div class="card-body">
+        <form class="ajax reset redirect" method="post"  enctype="multipart/form-data" action="{{url}}">
+        {% csrf_token %}
+            <div class="card-body card-padding">
+                <div class="row">
+                    <div class="col-sm-6">
+
+                        <div class="form-group fg-line">
+                            <label for="{{ form.title.id_for_label }}">
+                                {{ form.title.label }}
+                                {% if form.title.field.required %}
+                                    <small class="star">*</small>
+                                {% endif %}
+
+                                {% if form.title.help_text %}
+                                    <span data-original-title="Field Info" title="" data-content="{{ form.title.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+                                {% endif %}
+                            </label>
+                            {{ form.title }}
+
+                            {% if form.title.errors %}
+                                <label class="error">{{ form.title.errors.as_text }}</label>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!-- {{ form.shop }} -->
+                        <div class="form-group fg-line">
+                            <label for="{{ form.about.id_for_label }}">
+                                {{ form.about.label }}
+                                {% if form.about.field.required %}
+                                    <small class="star">*</small>
+                                {% endif %}
+
+                                {% if form.about.help_text %}
+                                    <span data-original-title="Field Info" title="" data-content="{{ form.about.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+                                {% endif %}
+                            </label>
+                            {{ form.about }}
+
+                            {% if form.about.errors %}
+                                <label class="error">{{ form.about.errors.as_text }}</label>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        {% if is_edit %}
+                            {% if instance.image_1 %}
+                                <div class="lgi-heading">Existing Image</div>
+                                <div class="main-Image" >
+                                    <img src="{{ instance.image_1.url }}" alt="Image" style="width:200px; ">
+                                </div>
+                                <br />
+                            {% endif %}
+                        {% endif %}
+
+                        <div class="form-group fg-line">
+                            <label for="{{ form.image_1.id_for_label }}">
+                                {{ form.image_1.label }}
+                                {% if form.image_1.field.required %}
+                                    <small class="star">*</small>
+                                {% endif %}
+
+                                {% if form.image_1.help_text %}
+                                    <span data-original-title="Field Info" title="" data-content="{{ form.image_1.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+                                {% endif %}
+                            </label>
+                            {{ form.image_1 }}
+
+                            {% if form.image_1.errors %}
+                                <label class="error">{{ form.image_1.errors.as_text }}</label>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        {% if is_edit %}
+                            {% if instance.image_2 %}
+                                <div class="lgi-heading">Existing Image</div>
+                                <div class="main-Image" >
+                                    <img src="{{ instance.image_2.url }}" alt="Image" style="width:200px; ">
+                                </div>
+                                <br />
+                            {% endif %}
+                        {% endif %}
+
+                        <div class="form-group fg-line">
+                            <label for="{{ form.image_2.id_for_label }}">
+                                {{ form.image_2.label }}
+                                {% if form.image_2.field.required %}
+                                    <small class="star">*</small>
+                                {% endif %}
+
+                                {% if form.image_2.help_text %}
+                                    <span data-original-title="Field Info" title="" data-content="{{ form.image_2.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+                                {% endif %}
+                            </label>
+                            {{ form.image_2 }}
+
+                            {% if form.image_2.errors %}
+                                <label class="error">{{ form.image_2.errors.as_text }}</label>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="m-t-20">
+                <button type="submit" class="btn btn-info waves-effect">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    {{form.media}}
+    <!-- end page content -->
+{% endblock content %}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>Contact Form</h1>
+    <form action={% url 'eqbay:contacts' %} method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <label for="{{form.phone.id_for_label}}">{{form.phone.label}}</label>
+        {{form.phone}}
+        <label for="{{form.address.id_for_label}}">{{form.address.label}}</label>
+        {{form.address}}
+        <label for="{{form.email.id_for_label}}">{{form.email.label}}</label>
+        {{form.email}}
+        <button>Create</button>
+    </form>
+
+    {% if message %}
+        <p>{{message}}</p>
+    {% endif %}
+
+    {% if contacts %}
+        <form action={% url 'eqbay:delete_contacts' %} method="get">
+            <h1>Industry List</h1>
+            <ul>
+                {% for contact in contacts %}
+                    <li>
+                        <h4>{{contact.phone}}</h4>
+                        <h4>{{contact.address}}</h4>
+                        <h4>{{contact.email}}</h4>
+                        <label for="delete">delete ?</label>
+                        <input type="checkbox" name="id" value="{{contact.id}}">
+                        <a href={% url 'eqbay:edit_contacts' id=contact.id %}>Edit</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <button class="delete" type="submit">Delete</button>
+        </form>
+    {% endif %}
+</body>
+</html>

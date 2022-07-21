@@ -1,0 +1,59 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Page Content-->
+    <div class="page-content">
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="page-title">{{ message }}</h4>
+                            </div><!--end col-->
+                            <div class="col-auto align-self-center">
+                                {% if create_link %}
+                                    <a class="btn btn-outline-info btn-icon-text"   href="{{ create_link }}" >Create <i class="ti-plus btn-icon-append"></i></a>
+                                {% endif %}
+                                <a class="btn btn-outline-info btn-icon-text"   href="{% url 'auth_logout' %}" >Logout <i class="ti-plus btn-icon-append"></i></a>
+                            </div><!--end col-->  
+                        </div><!--end row-->                                                              
+                    </div><!--end page-title-box-->
+                </div><!--end col-->
+            </div><!--end row-->
+
+            <div class="row">
+                <div class="nodata">
+                    <img src="{% static 'assets/images/nothing_found.jpg' %}" alt="">
+                </div>
+            </div>
+            {% if create_link %}
+                <a class="centralize btn btn-outline-info btn-icon-text" href="{{ create_link }}">Create {{menu}} </a> 
+            {% endif %}
+        </div>
+    </div>
+    <!-- end page content -->
+{% endblock content %}
+
+{% block static %}
+<style>
+    .nodata{
+        width: 450px;
+        height: 450px;
+        margin: 0 auto;
+    }
+
+    .nodata img{
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    .centralize{
+        display: block;
+        width: 200px;
+        margin: 0 auto;
+    }
+</style>
+{% endblock static %}

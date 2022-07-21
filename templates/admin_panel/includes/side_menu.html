@@ -1,0 +1,59 @@
+
+{% load static %}
+<div class="left-sidenav">
+    <!-- LOGO -->
+    <div class="brand">
+        <a href="{% url 'app' %}" class="logo">
+            <span>
+                <img src="" alt="logo-small" class="logo-sm" style="height: 50px;">
+            </span>
+           
+        </a>
+    </div>
+    <!--end logo-->
+    <div class="menu-content h-100" data-simplebar>
+        <ul class="metismenu left-sidenav-menu">
+            <li class="menu-label mt-0">Main</li>
+            <li>
+                <a href="{% url 'app' %}"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Dashboard</span></a>
+            </li>
+            <li>
+                <a href="javascript: void(0);"> <i data-feather="users" class="align-self-center menu-icon"></i><span>Menu</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                <ul class="nav-second-level" aria-expanded="false">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'dashboard:industry' %}"><i class="ti-control-record"></i>Industries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'dashboard:category' %}"><i class="ti-control-record"></i>Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url 'dashboard:products' %}><i class="ti-control-record"></i>Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url 'dashboard:product_variants' %}><i class="ti-control-record"></i>Product Variants</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url 'dashboard:product_variants_img' %}><i class="ti-control-record"></i>Product Variants Images</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url 'dashboard:quote_requests' %}><i class="ti-control-record"></i>Quote Requests</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url 'dashboard:enquiries' %}><i class="ti-control-record"></i>Enquiries</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url 'dashboard:innovations' %}><i class="ti-control-record"></i>Innovations</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="card-body bg-light-alt text-center">
+            <span class="text-muted d-none d-sm-inline-block">EQBAY © {% now 'Y' %}</span>                                            
+        </div>
+    </div>
+    
+</div>

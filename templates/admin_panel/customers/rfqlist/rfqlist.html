@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>Rfqlist Form</h1>
+    <form action="{% url 'customers:rfqlist' %}" method="post">
+        {% csrf_token %}
+        {% comment %} <label for="{{form.customer.id_for_label}}">{{form.customer.label}}</label>
+        {{form.customer}}
+        <label for="{{form.product_variant.id_for_label}}">{{form.product_variant.label}}</label>
+        {{form.product_variant}}
+        <label for="{{form.quantity.id_for_label}}">{{form.quantity.label}}</label>
+        {{form.quantity}} {% endcomment %}
+        {{ form.as_p }}
+        <button>Send Quote Request item</button>
+    </form>
+    {% if message %}
+    <p>{{message}}</p>
+    {% endif %}
+    <ul>
+        {% for rfq in rfqlist %}
+        <li>
+            <h5>{{rfq.customer}}</h5>
+            <h5>{{rfq.product_variant}}</h5>
+            <h5>{{rfq.quantity}}</h5>
+            <a href="{% url 'customers:delete_rfq' id=rfq.id  %}">Delete Request</a>
+            <a href="{% url 'customers:edit_rfq' id=rfq.id %}">Edit Request</a>
+        </li>
+        {% endfor %}
+    </ul>
+    
+
+</body>
+</html>

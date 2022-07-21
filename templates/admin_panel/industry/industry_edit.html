@@ -1,0 +1,87 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <div class="row">
+                    <div class="col">
+                        <h4 class="page-title">Edit Industry</h4>
+                    </div><!--end col-->
+                    <div class="col-auto align-self-center">
+                        {% comment %} <a class="btn btn-outline-info btn-icon-text"   href="{% url 'dashboard:industry_create' %}" >Create <i class="ti-plus btn-icon-append"></i></a> {% endcomment %}
+                        <a class="btn btn-outline-info btn-icon-text"   href="{% url 'auth_logout' %}" >Logout <i class="ti-plus btn-icon-append"></i></a>
+                    </div><!--end col-->  
+                </div><!--end row-->                                                              
+            </div><!--end page-title-box-->
+        </div><!--end col-->
+    </div><!--end row-->
+    <!-- end page title end breadcrumb -->
+    <form class="ajax reset redirect" action={% url 'dashboard:edit_industry' id=id %} method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="card-body card-padding">
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <div class="form-group fg-line">
+                        <label for="{{ form.name.id_for_label }}">
+                            {{ form.name.label }}
+                            {% if form.name.field.required %}
+                                <small class="star">*</small>
+                            {% endif %}
+
+                            {% if form.name.help_text %}
+                                <span data-original-title="Field Info" title="" data-content="{{ form.name.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+                            {% endif %}
+                        </label>
+                        {{ form.name }}
+
+                        {% if form.name.errors %}
+                            <label class="error">{{ form.name.errors.as_text }}</label>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <!-- {{ form.shop }} -->
+                    <div class="form-group fg-line">
+                        <label for="{{ form.image.id_for_label }}">
+                            {{ form.image.label }}
+                            {% if form.image.field.required %}
+                                <small class="star">*</small>
+                            {% endif %}
+
+                            {% if form.image.help_text %}
+                                <span data-original-title="Field Info" title="" data-content="{{ form.image.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+                            {% endif %}
+
+                            {% if instance.image %}
+                                <div class="lgi-heading">Existing Image</div>
+                                <div class="main-Image" >
+                                    <img src="{{ instance.image.url }}" alt="Image" style="width:200px; ">
+                                </div>
+                                <br />
+                            {% endif %}
+                        </label>
+                        {{ form.image }}
+
+                        {% if form.image.errors %}
+                            <label class="error">{{ form.image.errors.as_text }}</label>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+                            
+            <div class="m-t-20">
+            <button type="submit" class="btn btn-info waves-effect">Submit</button>
+            </div>
+        </div>
+    </form>
+    <a href="{% url 'dashboard:industry' %}">Go back</a>
+
+{% endblock %}

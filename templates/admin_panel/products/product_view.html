@@ -1,0 +1,38 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="product">
+        <h6>Name : {{ data.name }}</h6>
+        <div class="product-image">
+            <h6>Image : </h6>
+            <img src="{{data.image.url}}" alt="" />
+        </div>
+        <h6>Is_featured : {{ data.is_featured }}</h6>
+        <h6>Category : {{ data.category }}</h6>
+        <h6>Description : {{ data.description|striptags|safe }}</h6>
+        <h6>features : {{ data.features|striptags|safe }}</h6>
+        <h6>specifications : {{ data.specifications|striptags|safe }}</h6>
+        <h6>dimensions : {{ data.dimensions|striptags|safe }}</h6>
+        <h6>test_method : {{ data.test_method|striptags|safe }}</h6>
+        <h6>product_resources : {{ data.product_resources|striptags|safe }}</h6>
+    </div>
+
+    <a href="{% url 'dashboard:products' %}">Go back ?</a>
+
+    
+{% endblock content %}
+{% block static %}
+<style>
+    .product-image{
+        width:350px;
+        height:350px;
+        display: flex;
+    }
+    .product-image img{
+        width:200px;
+        height: 200px;
+        display: block;
+    }
+</style>
+{% endblock static %}

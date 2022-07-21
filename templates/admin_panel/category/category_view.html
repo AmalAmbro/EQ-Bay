@@ -1,0 +1,14 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="product">
+        <h6>Name : {{ data.name }}</h6>
+        <h6>Industry : {{ data.industry }}</h6>
+        <h6>Parent : {{ data.parent }}</h6>
+        
+    </div>
+
+    <a href="{% url 'dashboard:category' %}">Go back ?</a>
+
+{% endblock content %}

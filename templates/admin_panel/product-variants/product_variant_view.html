@@ -1,0 +1,12 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="product">
+        <h6>Product : {{ data.product }}</h6>
+        <h6>Model Name : {{ data.model_name }}</h6>
+    </div>
+
+    <a href="{% url 'dashboard:product_variants' %}">Go back ?</a>
+
+{% endblock content %}

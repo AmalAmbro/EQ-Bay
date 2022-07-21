@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>Quote Request Item Form</h1>
+    <form action="{% url 'customers:quote_item_requests' %}" method="post">
+        {% csrf_token %}
+        <label for="{{form.quote_request.id_for_label}}">{{form.quote_request.label}}</label>
+        {{form.quote_request}}
+        <label for="{{form.product_variant.id_for_label}}">{{form.product_variant.label}}</label>
+        {{form.product_variant}}
+        <label for="{{form.quantity.id_for_label}}">{{form.quantity.label}}</label>
+        {{form.quantity}}
+        <button>Send Quote Request item</button>
+    </form>
+    {% if message %}
+    <p>{{message}}</p>
+    {% endif %}
+    <ul>
+        {% for request in quote_item_requests %}
+        <li>
+            <h5>{{request.quote_request}}</h5>
+            <h5>{{request.product_variant}}</h5>
+            <h5>{{request.quantity}}</h5>
+            <a href="{% url 'customers:delete_quote_item_requests' id=request.id  %}">Delete Request</a>
+            <a href="{% url 'customers:edit_quote_item_requests' id=request.id %}">Edit Request</a>
+        </li>
+        {% endfor %}
+    </ul>
+    
+
+</body>
+</html>

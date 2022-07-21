@@ -1,0 +1,30 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>Edit Enquiry</h1>
+    <form action={% url 'eqbay:edit_enquiry' id=id %} method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="{{form.name.id_for_label}}">{{form.name.label}}</label>
+        {{form.name}}
+        <label for="{{form.phone.id_for_label}}">{{form.phone.label}}</label>
+        {{form.phone}}
+        <label for="{{form.message.id_for_label}}">{{form.message.label}}</label>
+        {{form.message}}
+        <label for="{{form.email.id_for_label}}">{{form.email.label}}</label>
+        {{form.email}}
+        <button>Update</button>
+    </form>
+
+    {% if message %}
+    <p>{{message}}</p>
+    {% endif %}
+
+    <a href="{% url 'eqbay:enquiry' %}">Go back</a>
+</body>
+</html> {% endcomment %}

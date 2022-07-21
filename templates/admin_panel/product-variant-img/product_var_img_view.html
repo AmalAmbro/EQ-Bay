@@ -1,0 +1,27 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="product">
+        <h6>Product Variant : {{ data.product_variant }}</h6>
+        <div class="product-image">
+            <h6>Image : </h6>
+            <img src="{{data.image.url}}" alt="" />
+        </div>
+    </div>
+
+    <a href="{% url 'dashboard:product_variants_img' %}">Go back ?</a>
+
+    <style>
+        .product-image{
+            width:350px;
+            height:350px;
+            display: flex;
+        }
+        .product-image img{
+            width:200px;
+            height: 200px;
+            display: block;
+        }
+    </style>
+{% endblock content %}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>Quote Request Form</h1>
+    <form action="{% url 'customers:edit_quote' id=id %}" method="post">
+        {% csrf_token %}
+        <label for="{{form.customer.id_for_label}}">{{form.customer.label}}</label>
+        {{form.customer}}
+        <label for="{{form.first_name.id_for_label}}">{{form.first_name.label}}</label>
+        {{form.first_name}}
+        <label for="{{form.last_name.id_for_label}}">{{form.last_name.label}}</label>
+        {{form.last_name}}
+        <label for="{{form.phone.id_for_label}}">{{form.phone.label}}</label>
+        {{form.phone}}
+        <label for="{{form.email.id_for_label}}">{{form.email.label}}</label>
+        {{form.email}}
+        <label for="{{form.address.id_for_label}}">{{form.address.label}}</label>
+        {{form.address}}
+        <label for="{{form.company_name.id_for_label}}">{{form.company_name.label}}</label>
+        {{form.company_name}}
+        <label for="{{form.city.id_for_label}}">{{form.city.label}}</label>
+        {{form.city}}
+        <label for="{{form.pincode.id_for_label}}">{{form.pincode.label}}</label>
+        {{form.pincode}}
+        <label for="{{form.country.id_for_label}}">{{form.country.label}}</label>
+        {{form.country}}
+        <label for="{{form.is_business.id_for_label}}">{{form.is_business.label}}</label>
+        {{form.is_business}}
+        <label for="{{form.gstin.id_for_label}}">{{form.gstin.label}}</label>
+        {{form.gstin}}
+        <label for="{{form.vat_no.id_for_label}}">{{form.vat_no.label}}</label>
+        {{form.vat_no}}
+        <label for="{{form.designation.id_for_label}}">{{form.designation.label}}</label>
+        {{form.designation}}
+        <button>Update Quote</button>
+    </form>
+    {% if message %}
+    <p>{{message}}</p>
+    {% endif %}
+    <a href="{% url 'customers:quote_requests' %}">Go back</a>
+</body>
+</html>

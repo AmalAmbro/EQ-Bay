@@ -1,0 +1,15 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="product">
+        <h6>Name : {{ data.name }}</h6>
+        <h6>Phone : {{ data.phone }}</h6>
+        <h6>Email : {{ data.email }}</h6>
+        <h6>Message : {{ data.message }}</h6>
+        
+    </div>
+
+    <a href="{% url 'dashboard:enquiries' %}">Go back ?</a>
+
+{% endblock content %}

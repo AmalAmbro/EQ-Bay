@@ -1,0 +1,32 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="product">
+        <h6>Name : {{ data.title }}</h6>
+        <div class="product-image">
+            <h6>Image : </h6>
+            <img src="{{data.image.url}}" alt="" />
+        </div>
+        <h6>Short description : {{ data.short_description|striptags|safe }}</h6>
+        <h6>Extra content : {{ data.extra_content|striptags|safe }}</h6>
+    </div>
+
+    <a href="{% url 'dashboard:innovations' %}">Go back ?</a>
+
+    
+{% endblock content %}
+{% block static %}
+<style>
+    .product-image{
+        width:350px;
+        height:350px;
+        display: flex;
+    }
+    .product-image img{
+        width:200px;
+        height: 200px;
+        display: block;
+    }
+</style>
+{% endblock static %}

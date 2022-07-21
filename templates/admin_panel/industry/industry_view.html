@@ -1,0 +1,30 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="industry">
+        <h6>Name : {{ data.name }}</h6>
+        <div class="product-image">
+            <h6>Image : </h6>
+            <img src="{{data.image.url}}" alt="" />
+        </div>
+    </div>
+
+    <a href="{% url 'dashboard:industry' %}">Go back ?</a>
+
+    
+{% endblock content %}
+{% block static %}
+<style>
+    .product-image{
+        width:350px;
+        height:350px;
+        display: flex;
+    }
+    .product-image img{
+        width:200px;
+        height: 200px;
+        display: block;
+    }
+</style>
+{% endblock static %}

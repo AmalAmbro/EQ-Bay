@@ -1,0 +1,47 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="card-body card-padding">
+    <h1>Create Product</h1>
+    <form class="ajax reset redirect" method="post"  enctype="multipart/form-data" action="{% url 'dashboard:products_create' %}">
+    {% csrf_token %}
+        <div class="card-body card-padding">
+            {% for field in form %}
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <div class="form-group fg-line">
+                        <label for="{{ field.id_for_label }}">
+                            {{ field.label }}
+                            {% if field.field.required %}
+                                <small class="star">*</small>
+                            {% endif %}
+
+                            {% if field.help_text %}
+                                <span data-original-title="Field Info" title="" data-content="{{ field.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+                            {% endif %}
+                        </label>
+                        {{ field }}
+
+                        {% if field.errors %}
+                            <label class="error">{{ field.errors.as_text }}</label>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+                                                
+            <div class="m-t-20">
+            <button type="submit" class="btn btn-info waves-effect">Submit</button>
+            </div>
+        </div>
+    </form>
+    <a href="{% url 'dashboard:products' %}">Go back ?</a>
+</div>
+
+{% endblock content %}
+{% block static %}
+{% load static %}
+{{form.media}}
+{% endblock static %}

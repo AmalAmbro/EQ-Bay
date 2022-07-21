@@ -1,0 +1,133 @@
+{% extends 'admin_panel/base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <div class="row">
+                    <div class="col">
+                        <h4 class="page-title">Edit Innovation</h4>
+                    </div><!--end col-->
+                    <div class="col-auto align-self-center">
+                        {% comment %} <a class="btn btn-outline-info btn-icon-text"   href="{% url 'dashboard:industry_create' %}" >Create <i class="ti-plus btn-icon-append"></i></a> {% endcomment %}
+                        <a class="btn btn-outline-info btn-icon-text"   href="{% url 'auth_logout' %}" >Logout <i class="ti-plus btn-icon-append"></i></a>
+                    </div><!--end col-->  
+                </div><!--end row-->                                                              
+            </div><!--end page-title-box-->
+        </div><!--end col-->
+    </div><!--end row-->
+    <!-- end page title end breadcrumb -->
+    <form class="ajax reset redirect" action={% url 'dashboard:edit_innovation' id=id %} method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="card-body card-padding">
+            
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <div class="form-group fg-line">
+                        <label for="{{ form.title.id_for_label }}">
+                            {{ form.title.label }}
+                            {% if form.title.field.required %}
+                                <small class="star">*</small>
+                            {% endif %}
+
+                            {% if form.title.help_text %}
+                                <span data-original-title="Field Info" title="" data-content="{{ form.title.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+                            {% endif %}
+                        </label>
+                        {{ form.title }}
+
+                        {% if form.title.errors %}
+                            <label class="error">{{ form.title.errors.as_text }}</label>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <div class="form-group fg-line">
+                        <label for="{{ form.image.id_for_label }}">
+                            {{ form.image.label }}
+                            {% if form.image.field.required %}
+                                <small class="star">*</small>
+                            {% endif %}
+
+                            {% if form.image.help_text %}
+                                <span data-original-title="Field Info" title="" data-content="{{ form.image.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+                            {% endif %}
+                            {% if instance.image %}
+                                <div class="lgi-heading">Existing Image</div>
+                                <div class="main-Image" >
+                                    <img src="{{ instance.image.url }}" alt="Image" style="width:200px; ">
+                                </div>
+                                <br />
+                            {% endif %}
+                        </label>
+                        {{ form.image }}
+
+                        {% if form.image.errors %}
+                            <label class="error">{{ form.image.errors.as_text }}</label>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <div class="form-group fg-line">
+                        <label for="{{ form.short_description.id_for_label }}">
+                            {{ form.short_description.label }}
+                            {% if form.short_description.field.required %}
+                                <small class="star">*</small>
+                            {% endif %}
+
+                            {% if form.short_description.help_text %}
+                                <span data-original-title="Field Info" title="" data-content="{{ form.short_description.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+                            {% endif %}
+                        </label>
+                        {{ form.short_description }}
+
+                        {% if form.short_description.errors %}
+                            <label class="error">{{ form.short_description.errors.as_text }}</label>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <div class="form-group fg-line">
+                        <label for="{{ form.extra_content.id_for_label }}">
+                            {{ form.extra_content.label }}
+                            {% if form.extra_content.field.required %}
+                                <small class="star">*</small>
+                            {% endif %}
+
+                            {% if form.extra_content.help_text %}
+                                <span data-original-title="Field Info" title="" data-content="{{ form.extra_content.help_text }}" data-placement="left" data-toggle="popover" data-trigger="hover" class="help-text-icon zmdi zmdi-info-outline">
+                            {% endif %}
+                        </label>
+                        {{ form.extra_content }}
+
+                        {% if form.extra_content.errors %}
+                            <label class="error">{{ form.extra_content.errors.as_text }}</label>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+                            
+            <div class="m-t-20">
+            <button type="submit" class="btn btn-info waves-effect">Submit</button>
+            </div>
+        </div>
+    </form>
+    <a href="{% url 'dashboard:innovations' %}">Go back</a>
+
+{% endblock %}
